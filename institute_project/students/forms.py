@@ -1,4 +1,5 @@
 from django import forms
+from django.db import transaction
 from students.models import StudentModel
 from users.models import UserModel
 
@@ -13,6 +14,7 @@ class StudentForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['user']
         
+    @transaction.atomic
     def save(self, commit = True):
         
         user = UserModel.objects.create_user(
