@@ -5,13 +5,14 @@
     {{page_title}}
 {% endblock title %}
     
+{% load crispy_forms_tags %}
 
 {% block content %}
     
     <h2>{{form_title}}</h2><br>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data" class="mb-4">
         {% csrf_token %}
-
+        {{form_data|crispy}}
 
         <button type="submit" class="btn btn-primary">{{form_btn}}</button>
     </form>
