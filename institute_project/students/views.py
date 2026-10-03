@@ -11,3 +11,14 @@ def student_view(request):
     }
     
     return render(request, 'student-list.html', context)
+
+
+def student_form(request):
+    
+    context = {
+        'form_title' : 'Add Student Information',
+        'form_btn' : 'Add Student',
+        'page_title' : 'Student Register'
+    }
+    
+    return render(request, 'layout/base-form.html', context)

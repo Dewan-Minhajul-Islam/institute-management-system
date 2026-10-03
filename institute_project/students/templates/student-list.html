@@ -10,6 +10,10 @@
 
 {% block content %}
     <center><h2>All Students Informations</h2></center><br>
+    
+    <div class="d-flex justify-content-end">
+        <a href="{% url 'student_form' %}" class="btn btn-primary">Add Student</a>
+    </div><br>
 
     <table class="table table-striped">
         <thead>
