@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from students.models import StudentModel
 from students.forms import *
 
@@ -18,6 +19,13 @@ def student_view(request):
 def student_form(request):
     
     form_data = StudentForm()
+    if request.method == 'POST':
+        form_data = StudentForm(request.POST, request.FILES)
+        if form_data.is_valid():
+            form_data.save()
+            messages.success(request, 'Student Register Successfully')
+            return redirect('student_view')
+    
     
     context = {
         'form_title' : 'Add Student Information',
